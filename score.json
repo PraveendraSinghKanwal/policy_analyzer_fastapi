@@ -1,0 +1,54 @@
+{
+  "gapAnalyses": [
+    {
+      "name": "Expense_Management.xlsx",        
+      "score": 85
+    },
+    {
+      "name": "Air_Travel.xlsx",
+      "score": 90
+    },
+    {
+      "name": "Ground_Transportation.xlsx",
+      "score": 87
+    },
+    {
+      "name": "Group_&_Event_Travel.xlsx",
+      "score": 88
+    },
+    {
+      "name": "Hotel_Lodging.xlsx",
+      "score": 92
+    },
+    {
+      "name": "Meals_&_Entertainment.xlsx",
+      "score": 90
+    },
+    {
+      "name": "Overview_&_Guidelines.xlsx",
+      "score": 80
+    },
+    {
+      "name": "Risk_Management.xlsx",
+      "score": 84
+    },
+    {
+      "name": "Sustainability.xlsx",
+      "score": 87
+    },
+    {
+      "name": "Travel_Arrangements.xlsx",
+      "score": 91
+    },
+    {
+      "name": "Wellbeing.xlsx",
+      "score": 89
+    },
+    {
+      "name": "Group_&_Events_Travel.xlsx",
+      "score": 81
+    }
+
+  ],
+  "totalScore": 88 
+}

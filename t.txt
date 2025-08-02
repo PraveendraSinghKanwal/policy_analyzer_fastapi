@@ -1,0 +1,19 @@
+Completely analyse this application, and analyse how we are handling the files send by backend API.
+My backend sends the 'files' folder, inside 'files' folder on sub-folder is 'Summary', inside ' Summary' sub -folder we there are 'Gap_Summary.json', 'Gap_Summary.docx' and 'Gap_Summary.pdf'. The structure of 'files' folder send by backend is as follows- 
+    files
+    | - -  Analysis/
+    | - - excel_data/
+    | - - Summary/
+    |      | - - Gap_Summary.docx
+    |      | - - Gap_Summary.json
+    |      | - - Gap_Summary.pdf 
+    |
+    | - - score.json
+
+In @DownloadButtons.vue, in download-row-group, we have two button "Download Scoring and Gap Analysis " button and "Download Gap Summary" button. Keep the functionality of "Download Scoring and Gap Analysis " button as it is but I want some changes in "Download Gap Summary" button. I want to give option to the user to download any one or both the 'Gap_Summary.docx' and 'Gap_Summary.pdf' file. Do the following changes in "Download Gap Summary" button-
+    1: Create two check box (excel and pdf) in right side of "Download Gap Summary" button. Both check box should be very small and in vertically one above another position. The combined height of two check box should be equal to total height of  "Download Gap Summary" button.
+    2: Enable the  "Download Gap Summary" button only if one or both the check box is checked(clicked).
+    3: Use @excel_download.jpeg and @pdf_download.jpg as image in checkbox.
+
+
+

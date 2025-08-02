@@ -5,6 +5,10 @@ import zipfile
 import openpyxl
 from docx import Document
 from reportlab.pdfgen import canvas
+import os
+import glob
+from pathlib import Path
+from .process_excel import process_excel_files
 
 router = APIRouter()
 
@@ -13,9 +17,34 @@ def create_dummy_excel1() -> BytesIO:
     wb = openpyxl.Workbook()
     ws = wb.active
     ws.title = "Sheet1"
-    ws.append(["ID", "Name", "Value"])
-    ws.append([1, "Item 1A", 123])
-    ws.append([2, "Item 1B", 456])
+    ws.append(["ID", "Name", "Value","ID", "Name", "Value","ID", "Name", "Value","ID", "Name", "Value","ID", "Name", "Value","ID", "Name", "Value","ID", "Name", "Value","ID", "Name", "Value"])
+    ws.append([1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123, 1, "Item 1A", 123,1, "Item 1A", 123])
+    ws.append([1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123, 1, "Item 1A", 123,1, "Item 1A", 123])
+    ws.append([1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123, 1, "Item 1A", 123,1, "Item 1A", 123])
+    ws.append([1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123, 1, "Item 1A", 123,1, "Item 1A", 123])
+    ws.append([1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123, 1, "Item 1A", 123,1, "Item 1A", 123])
+    ws.append([1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123, 1, "Item 1A", 123,1, "Item 1A", 123])
+    ws.append([1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123, 1, "Item 1A", 123,1, "Item 1A", 123])
+    ws.append([1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123, 1, "Item 1A", 123,1, "Item 1A", 123])
+    ws.append([1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123, 1, "Item 1A", 123,1, "Item 1A", 123])
+    ws.append([1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123, 1, "Item 1A", 123,1, "Item 1A", 123])
+    ws.append([1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123, 1, "Item 1A", 123,1, "Item 1A", 123])
+    ws.append([1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123, 1, "Item 1A", 123,1, "Item 1A", 123])
+    ws.append([1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123, 1, "Item 1A", 123,1, "Item 1A", 123])
+    ws.append([1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123, 1, "Item 1A", 123,1, "Item 1A", 123])
+    ws.append([1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123, 1, "Item 1A", 123,1, "Item 1A", 123])
+    ws.append([1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123, 1, "Item 1A", 123,1, "Item 1A", 123])
+    ws.append([1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123, 1, "Item 1A", 123,1, "Item 1A", 123])
+    ws.append([1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123, 1, "Item 1A", 123,1, "Item 1A", 123])
+    ws.append([1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123, 1, "Item 1A", 123,1, "Item 1A", 123])
+    ws.append([1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123, 1, "Item 1A", 123,1, "Item 1A", 123])
+    ws.append([1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123, 1, "Item 1A", 123,1, "Item 1A", 123])
+    ws.append([1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123, 1, "Item 1A", 123,1, "Item 1A", 123])
+    ws.append([1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123, 1, "Item 1A", 123,1, "Item 1A", 123])
+    ws.append([1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123, 1, "Item 1A", 123,1, "Item 1A", 123])
+    ws.append([1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123, 1, "Item 1A", 123,1, "Item 1A", 123])
+    ws.append([1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123, 1, "Item 1A", 123,1, "Item 1A", 123])
+    ws.append([1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123,1, "Item 1A", 123, 1, "Item 1A", 123,1, "Item 1A", 123])
     wb.save(excel_buffer)
     excel_buffer.seek(0)
     return excel_buffer
@@ -90,28 +119,31 @@ def add_file_to_zip(zip_file, filename: str, file_buffer: BytesIO):
     file_buffer.seek(0)
     zip_file.writestr(filename, file_buffer.read())
 
+
+
 @router.post("/upload-pdf")
-async def upload_pdf(file: UploadFile = File(...)):
+async def upload_pdf(file: UploadFile = File(...), local_folder: str = "excel_files"):
     # Accept any file, but you can keep PDF validation if needed
     try:
+        import time
+        # time.sleep(1)
         zip_buffer = BytesIO()
         with zipfile.ZipFile(zip_buffer, "w") as zip_file:
-            excel1 = create_dummy_excel1()
-            add_file_to_zip(zip_file, "Standard_Analyses_travell_policy.xlsx", excel1)
-            add_file_to_zip(zip_file, "Standard_Analyses_stay_policy.xlsx", excel1)
-            add_file_to_zip(zip_file, "Standard_Analyses_rest.xlsx", excel1)
-            add_file_to_zip(zip_file, "Standard_Analyses_emp_stress.xlsx", excel1)
-            add_file_to_zip(zip_file, "Standard_Analyses_routine.xlsx", excel1)
-            excel2 = create_dummy_excel2()
-            add_file_to_zip(zip_file, "Gap_Analyses_travell_policy.xlsx", excel2)
-            add_file_to_zip(zip_file, "Gap_Analyses_stay_policy.xlsx", excel2)
-            add_file_to_zip(zip_file, "Gap_Analyses_rest.xlsx", excel2)
-            add_file_to_zip(zip_file, "Gap_Analyses_emp_stress.xlsx", excel2)
-            add_file_to_zip(zip_file, "Gap_Analyses_routine.xlsx", excel2)
+            # Add files from local folder
+            add_folder_files_to_zip(zip_file, local_folder)
+            
+            # Continue with dummy files (existing functionality)
+            # excel1 = create_dummy_excel1()
+            # add_file_to_zip(zip_file, "Standard_Analyses_travell_policy.xlsx", excel1)
+            # add_file_to_zip(zip_file, "Standard_Analyses_stay_policy.xlsx", excel1)
+            # excel2 = create_dummy_excel2()
+            # add_file_to_zip(zip_file, "Gap_Analyses_travell_policy.xlsx", excel2)
+            # add_file_to_zip(zip_file, "Gap_Analyses_stay_policy.xlsx", excel2)
+            # add_file_to_zip(zip_file, "Gap_Analyses_rest.xlsx", excel2)
             # text_file = create_dummy_text()
             # add_file_to_zip(zip_file, "Summary.txt", text_file)
-            pdf_file = create_dummy_pdf()
-            add_file_to_zip(zip_file, "Summary.pdf", pdf_file)
+            # pdf_file = create_dummy_pdf()
+            # add_file_to_zip(zip_file, "Summary.pdf", pdf_file)
             # text_file = create_dummy_doc()
             # add_file_to_zip(zip_file, "Summary.docx", text_file)
         zip_buffer.seek(0)
@@ -122,3 +154,58 @@ async def upload_pdf(file: UploadFile = File(...)):
         )
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e)) 
+
+def add_folder_files_to_zip(zip_file, folder_path: str):
+    """Simple function to read all files from a folder and add them to zip"""
+    if os.path.exists(folder_path):
+        for filename in os.listdir(folder_path):
+            file_path = os.path.join(folder_path, filename)
+            if os.path.isfile(file_path):
+                with open(file_path, 'rb') as file:
+                    zip_file.writestr(filename, file.read())
+
+@router.post("/api/v1/upload")
+async def upload_pdf():
+# async def upload_pdf(pdf_file: UploadFile = File(...)):
+    local_folder1: str = "Analysis"
+    local_folder2: str = "Summary"
+    local_folder3: str = "excel_data"
+    score_json_path = "score.json"
+    process_excel_files()
+    try:
+        import time
+        # time.sleep(1)
+        zip_buffer = BytesIO()
+        with zipfile.ZipFile(zip_buffer, "w", zipfile.ZIP_DEFLATED) as zip_file:
+            # Add files from first sub-folder
+            if os.path.exists(local_folder1):
+                for filename in os.listdir(local_folder1):
+                    file_path = os.path.join(local_folder1, filename)
+                    if os.path.isfile(file_path):
+                        with open(file_path, 'rb') as f:
+                            zip_file.writestr(f"Analysis/{filename}", f.read())
+            # Add files from second sub-folder
+            if os.path.exists(local_folder2):
+                for filename in os.listdir(local_folder2):
+                    file_path = os.path.join(local_folder2, filename)
+                    if os.path.isfile(file_path):
+                        with open(file_path, 'rb') as f:
+                            zip_file.writestr(f"Summary/{filename}", f.read())
+            if os.path.exists(local_folder3):
+                for filename in os.listdir(local_folder3):
+                    file_path = os.path.join(local_folder3, filename)
+                    if os.path.isfile(file_path):
+                        with open(file_path, 'rb') as f:
+                            zip_file.writestr(f"excel_data/{filename}", f.read())        
+            # Add score.json file to zip
+            if os.path.exists(score_json_path):
+                with open(score_json_path, 'rb') as f:
+                    zip_file.writestr("score.json", f.read())
+        zip_buffer.seek(0)
+        return StreamingResponse(
+            zip_buffer,
+            media_type="application/x-zip-compressed",
+            headers={"Content-Disposition": "attachment; filename=files.zip"}
+        )
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
